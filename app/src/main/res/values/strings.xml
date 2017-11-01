@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Blood Donor</string>
+    <string name="etemail">Email</string>
+    <string name="etpassword">Password</string>
+    <string name="btlogin">Login</string>
+    <string name="btregistration">Register</string>
+    <string name="etconfirmpassword">Confirm Password</string>
+    <string name="etphone">Phone(without +91)</string>
+    <string name="etname">Name</string>
+    <string name="spinnerbloodgroup">Select Blood Group</string>
+    <string name="notuser">New user? Register here!</string>
+    <string name="tvlogout">Logout</string>
+</resources>
