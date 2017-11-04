@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="in.inkers.blooddonor">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,11 +20,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:launchMode="singleInstance">
         </activity>
 
-        <activity android:name=".RegistrationActivity">
+        <activity android:name=".RegistrationActivity"
+            android:launchMode="singleInstance">
         </activity>
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCCSp9xHae2vsCEzA9sb5hsn2mDCpw5XKc"/>
     </application>
 
 </manifest>

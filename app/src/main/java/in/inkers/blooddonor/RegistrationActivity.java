@@ -8,10 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,6 +37,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private Spinner bloodgroup;
     private ProgressBar progressreg;
     private FirebaseAuth mAuth;
+    private TextView tvlocation;
+    private ImageView ivlocation;
+    int PLACE_PICKER_REQUEST=1;
+    String place="";
+    Place getPlace;
 
     private DatabaseReference databaseReference;
 
@@ -46,9 +57,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         cpassword=findViewById(R.id.etregconfirmpassword);
         bloodgroup=findViewById(R.id.spinnerregbloodgrp);
         progressreg=findViewById(R.id.pbreg);
+        tvlocation=findViewById(R.id.tvlocation);
+        ivlocation=findViewById(R.id.ivlocation);
 
         findViewById(R.id.btreg).setOnClickListener(this);
         findViewById(R.id.tvreglogin).setOnClickListener(this);
+        tvlocation.setOnClickListener(this);
+        ivlocation.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference();
@@ -61,6 +76,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         final String inPassword=password.getText().toString().trim();
         final String inCPassword=cpassword.getText().toString().trim();
         final String inBloodGroup=String.valueOf(bloodgroup.getSelectedItem());
+        final Place inPlace;
 
         if(inName.isEmpty()){
             name.setError("Name is required");
@@ -112,6 +128,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             bloodgroup.requestFocus();
             return;
         }
+        if(place.isEmpty()){
+            Toast.makeText(this,"Please select your place from map",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else{
+            inPlace=getPlace;
+        }
 
         progressreg.setVisibility(View.VISIBLE);
 
@@ -121,7 +144,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 progressreg.setVisibility(View.GONE);
                 if(task.isSuccessful()){
                     mAuth.signInWithEmailAndPassword(inEmail,inPassword);
-                    saveUserInfo(inName,inEmail,inPhone,inBloodGroup);
+                    saveUserInfo(inName,inEmail,inPhone,inBloodGroup,inPlace);
                     Intent intent=new Intent(RegistrationActivity.this,MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //Back button won't take back to login again
                     startActivity(intent);
@@ -141,11 +164,35 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    private void saveUserInfo(String name,String email,String phone,String blood){
-        UserInformation userInformation=new UserInformation(name,email,phone,blood);
+    private void saveUserInfo(String name,String email,String phone,String blood, Place place){
+        UserInformation userInformation=new UserInformation(name,email,phone,blood,place);
 
         FirebaseUser user= mAuth.getCurrentUser();
         databaseReference.child(user.getUid()).setValue(userInformation);
+    }
+
+    protected  void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode==PLACE_PICKER_REQUEST){
+            if(resultCode==RESULT_OK){
+                getPlace=PlacePicker.getPlace(this, data);
+                place= String.format("Place: %s",getPlace.getName());
+                tvlocation.setText(place);
+            }
+        }
+    }
+
+    public  void pickPlace(){
+        PlacePicker.IntentBuilder placeIntent=new PlacePicker.IntentBuilder();
+        Intent intent;
+        try {
+            intent=placeIntent.build(this);
+            startActivityForResult(intent,PLACE_PICKER_REQUEST);
+
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -156,7 +203,16 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.tvreglogin:
+                startActivity(new Intent(this,LoginActivity.class));
                 finish();
+                break;
+
+            case R.id.tvlocation:
+                pickPlace();
+                break;
+
+            case R.id.ivlocation:
+                pickPlace();
                 break;
         }
     }

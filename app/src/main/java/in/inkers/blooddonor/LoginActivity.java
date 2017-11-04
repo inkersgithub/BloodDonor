@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText email,password;
     ProgressBar progressLogin;
     private FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.tvnotuser:
                 Intent intent = new Intent(this, RegistrationActivity.class);
                 startActivity(intent);
+                finish();
                 break;
 
             case R.id.btlogin:

@@ -11,81 +11,78 @@
 
     <EditText
         android:id="@+id/etregname"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/etname"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/etregemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvreg" />
 
     <Spinner
         android:id="@+id/spinnerregbloodgrp"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
         android:entries="@array/spinnerentries"
         android:prompt="@string/spinnerbloodgroup"
-        app:layout_constraintBottom_toTopOf="@+id/btreg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etregconfirmpassword" />
 
     <EditText
         android:id="@+id/etregphone"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:hint="@string/etphone"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/etregpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etregemail" />
 
     <EditText
         android:id="@+id/etregemail"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:hint="@string/etemail"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/etregphone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etregname" />
 
     <EditText
         android:id="@+id/etregconfirmpassword"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:hint="@string/etconfirmpassword"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerregbloodgrp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etregpassword" />
 
     <EditText
         android:id="@+id/etregpassword"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:hint="@string/etpassword"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/etregconfirmpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etregphone" />
@@ -100,32 +97,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerregbloodgrp" />
+        app:layout_constraintTop_toBottomOf="@+id/ivlocation" />
 
     <TextView
         android:id="@+id/tvreg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/btregistration"
         android:textColor="@color/red"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/etregname"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/pbreg"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="3dp"
         android:indeterminateTint="@color/red"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/etregpassword"
+        app:layout_constraintBottom_toTopOf="@+id/etregconfirmpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -133,15 +127,44 @@
         android:id="@+id/tvreglogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
         android:text="@string/btlogin"
         android:textColor="@color/red"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/etregname"
+        app:layout_constraintEnd_toEndOf="@+id/etregname"
+        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintStart_toEndOf="@+id/tvreg" />
+
+    <ImageView
+        android:id="@+id/ivlocation"
+        android:layout_width="44dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="457dp"
+        app:layout_constraintBottom_toTopOf="@+id/btreg"
+        app:layout_constraintEnd_toStartOf="@+id/tvlocation"
+        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/addlocationicon" />
+
+    <TextView
+        android:id="@+id/tvlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/tvlocation"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btreg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
-        app:layout_constraintStart_toEndOf="@+id/tvreg"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerregbloodgrp" />
 
 </android.support.constraint.ConstraintLayout>

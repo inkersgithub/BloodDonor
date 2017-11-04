@@ -10,4 +10,5 @@
     <string name="spinnerbloodgroup">Select Blood Group</string>
     <string name="notuser">New user? Register here!</string>
     <string name="tvlogout">Logout</string>
+    <string name="tvlocation">Search and add your Location</string>
 </resources>
