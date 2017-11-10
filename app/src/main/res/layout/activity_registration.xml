@@ -18,6 +18,7 @@
         android:layout_marginTop="8dp"
         android:hint="@string/etname"
         android:inputType="text"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvreg" />
@@ -44,6 +45,8 @@
         android:layout_marginTop="24dp"
         android:hint="@string/etphone"
         android:inputType="phone"
+        android:maxLength="10"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etregemail" />
@@ -56,6 +59,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:hint="@string/etemail"
+        android:singleLine="true"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +74,7 @@
         android:layout_marginTop="24dp"
         android:hint="@string/etconfirmpassword"
         android:inputType="textPassword"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etregpassword" />
@@ -81,6 +86,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:singleLine="true"
         android:hint="@string/etpassword"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"

@@ -32,16 +32,20 @@
             android:launchMode="singleInstance"
             android:screenOrientation="portrait">
         </activity>
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCCSp9xHae2vsCEzA9sb5hsn2mDCpw5XKc" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/MainActivityTheme"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".BloodGroupActivity"
+            android:theme="@style/MainActivityTheme"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCCSp9xHae2vsCEzA9sb5hsn2mDCpw5XKc" />
     </application>
 
 </manifest>
